@@ -11,6 +11,8 @@ set -x XDG_CONFIG_HOME "$HOME/.config"
 set -Ux XDG_DATA_DIRS "/var/lib/flatpak/exports/share" "$HOME/.local/share/flatpak/exports/share" "/usr/share/ubuntu" "/usr/share/gnome" "/usr/local/share/" "/usr/share/"
 set -x XDG_DATA_HOME "$HOME/.local/share"
 
+set fish_greeting
+
 if ! set PATH_EXTENDED
     set PATH_EXTENDED true
     set -Ux PATH "$HOME/bin" "$HOME/bin/custom" "/usr/sbin/" "/usr/local/bin" "/usr/local/go/bin" "/snap/bin" "$HOME/.local/bin"
