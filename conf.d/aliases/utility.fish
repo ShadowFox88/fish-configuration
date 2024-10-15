@@ -21,13 +21,7 @@ function edit
         cd (dirname $target)
     end
 
-    ssh fish.devpod
-
-    if [ $status != 0 ]
-        devpod up .
-        ssh fish.devpod
-    end
-
+    devpod ssh . --workdir /workspace --command "n ."
     cd $original_directory
 end
 
