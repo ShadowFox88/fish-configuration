@@ -8,4 +8,12 @@ if which docker &> /dev/null
     alias di="docker image ls"
     alias dp="docker pull"
     alias docker-images="docker image ls"
+
+    function docker-prune-all --wraps "docker system prune"
+        echo "y" | docker system prune
+    end
+
+    function docker-remove-by-name --wraps "docker rmi"
+        docker rmi (docker images "$name" -a -q)
+    end
 end

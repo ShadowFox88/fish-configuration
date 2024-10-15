@@ -29,10 +29,38 @@ if which git &> /dev/null
         end
     end
 
-    alias fix-formatting-commit="p format && git add . && git commit -m 'Fix formatting' && git push"
-    # TODO: Unify all Git-related binaries and commands into 1 module
-    alias git-init-submodule="git submodule update --init --recursive"
-    alias git-update-submodule="git submodule update --recursive --remote"
+    function fix-formatting-commit
+        p format
+        git add .
+        git commit -m "Fix formatting"
+        git push
+    end
+
+    function git-init-submodule --wraps "git submodule update"
+        git submodule update --init --recursive
+    end
+
+    function git-update-submodule --wraps "git submodule update --recursive --remote"
+        git submodule update --recursive --remote
+    end
+
     alias gism="git-init-submodule"
     alias gusm="git-update-submodule"
+
+    function git-fetch-all-branches
+        for remote in (git branch -r | grep -v '\->' | sed "s,\x1B\[[0-9;]*[a-zA-Z],,g")
+            set trimmed_remote (string trim $remote)
+
+            echo git branch --track (string replace -r -a "^\s*origin/" "" "$remote") "$trimmed_remote"
+        end
+
+        git fetch --all
+        git pull --all
+    end
+
+    function git-submodule-remove
+        git submodule deinit -f -- $submodule
+        rm -rf .git/modules/$submodule
+        git rm --cached $submodule
+    end
 end
