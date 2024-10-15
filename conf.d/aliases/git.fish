@@ -33,6 +33,6 @@ if which git &> /dev/null
     # TODO: Unify all Git-related binaries and commands into 1 module
     alias git-init-submodule="git submodule update --init --recursive"
     alias git-update-submodule="git submodule update --recursive --remote"
-    alias gism="git-submodule-initialise"
-    alias gusm="git-submodule-update"
+    alias gism="git-init-submodule"
+    alias gusm="git-update-submodule"
 end
