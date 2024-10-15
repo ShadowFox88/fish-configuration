@@ -14,7 +14,7 @@ if which git &> /dev/null
     alias gsm="git submodule"
 
     function ga --wraps "git add"
-        if [ "$argv[0]" = "" ]
+        if [ "$argv[1]" = "" ]
             git add .
         else
             git add $argv
@@ -22,7 +22,7 @@ if which git &> /dev/null
     end
 
     function gpsu --wraps "git push"
-        if [ "$argv[0]" = "" ]
+        if [ "$argv[1]" = "" ]
             git push -u origin main
         else
             git push -u origin $argv

@@ -4,7 +4,7 @@ set NEOVIM_CONFIGURATION_DIRECTORY "$HOME/.config/nvim"
 if which nvim &> /dev/null
     function n
         set original_directory "$PWD"
-        set object_to_edit "$argv[0]"
+        set object_to_edit "$argv[1]"
 
         if [ $object_to_edit = "" ]
             set object_to_edit $NEOVIM_CONFIGURATION_DIRECTORY

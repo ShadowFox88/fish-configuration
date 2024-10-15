@@ -13,7 +13,7 @@ alias scpq="scp &> /dev/null"
 
 function edit
     set original_directory "$PWD"
-    set target "$argv[0]"
+    set target "$argv[1]"
 
     if [ -d $target ]
         cd $target
