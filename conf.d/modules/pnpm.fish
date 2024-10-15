@@ -2,5 +2,5 @@
 set -x PNPM_HOME "$HOME/.local/share/pnpm"
 
 if [ -d "$PNPM_HOME" ]
-    set -Ux PATH "$PNPM_HOME"
+    fish_add_path $PNPM_HOME
 end

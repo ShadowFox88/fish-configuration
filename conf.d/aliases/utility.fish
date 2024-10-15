@@ -21,7 +21,7 @@ function edit
         cd (dirname $target)
     end
 
-    devpod ssh . --workdir /workspace --command "n ."
+    devpod ssh . --workdir /workspace --command "nvim ."
     cd $original_directory
 end
 

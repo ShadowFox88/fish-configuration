@@ -4,7 +4,7 @@ set -x GNUPGHOME "$HOME/.local/gnupg"
 set -x INPUTRC "$HOME/.inputrc"
 set -x LANG "en_GB.UTF-8"
 set -x LANGUAGE "en_GB:en"
-set -x ASSWORD_STORE_DIR "$HOME/.local/password-store"
+set -x PASSWORD_STORE_DIR "$HOME/.local/password-store"
 set -x VISUAL "nvim"
 set -x XDG_CACHE_HOME "$HOME/.cache"
 set -x XDG_CONFIG_HOME "$HOME/.config"
@@ -13,7 +13,4 @@ set -x XDG_DATA_HOME "$HOME/.local/share"
 
 set fish_greeting
 
-if ! set PATH_EXTENDED
-    set PATH_EXTENDED true
-    set -Ux PATH "$HOME/bin" "$HOME/bin/custom" "/usr/sbin/" "/usr/local/bin" "/usr/local/go/bin" "/snap/bin" "$HOME/.local/bin"
-end
+fish_add_path "$HOME/bin" "$HOME/bin/custom" "/usr/local/go/bin" "/snap/bin" "$HOME/.local/bin"

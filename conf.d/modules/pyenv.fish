@@ -4,7 +4,7 @@ set -x PYENV_VIRTUALENV_DISABLE_PROMPT true
 set VENV_ACTIVATION_SCRIPT ".venv/bin/activate"
 
 if [ -d "$PYENV_ROOT" ]
-    set -Ux PATH="$PYENV_ROOT/bin"
+    fish_add_path "$PYENV_ROOT/bin"
 
     eval "$(pyenv init -)" &> /dev/null
     eval "$(pyenv virtualenv-init -)" &> /dev/null
