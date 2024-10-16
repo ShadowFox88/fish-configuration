@@ -47,8 +47,25 @@ function auto_detect_package_manager
     end
 end
 
-alias p="command $P_PACKAGE_MANAGER"
-alias px="command $PX_COMMAND"
+function p
+    set subcommand $argv[1]
+
+    if not [ $subcommand ]
+        command $P_PACKAGE_MANAGER
+    else if [ $subcommand = "query" ]
+        echo $P_PACKAGE_MANAGER $argv[2..]
+    end
+end
+
+function px
+    set subcommand $argv[1]
+
+    if not [ $subcommand ]
+        command $PX_COMMAND
+    else if [ $subcommand = "query" ]
+        echo $PX_COMMAND $argv[2..]
+    end
+end
 
 function on_pwd_change --on-variable PWD
     auto_detect_package_manager
