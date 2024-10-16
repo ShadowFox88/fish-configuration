@@ -17,4 +17,8 @@ if which docker &> /dev/null
     function docker-remove-by-name --wraps "docker rmi"
         docker rmi (docker images "$name" -a -q)
     end
+
+    function docker-remove-untagged-images --wraps "docker rmi -f"
+        docker rmi -f $(docker images --filter "dangling=true" -q --no-trunc)
+    end
 end
