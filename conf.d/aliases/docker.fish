@@ -7,6 +7,7 @@ if which docker &> /dev/null
     alias dcr="dc down && dc up"
     alias di="docker image ls"
     alias dp="docker pull"
+    alias drmi="docker rmi"
     alias docker-images="docker image ls"
 
     function docker-prune-all --wraps "docker system prune"
