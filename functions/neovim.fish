@@ -18,9 +18,9 @@ else if which docker &> /dev/null
         if not [ $target ]
             docker run $default_flags $default_volumes -v $HOME/.config/nvim:/workspace cyrus01337/neovim-devcontainer
         else if [ -d $target ]
-            docker run $default_flags $default_volumes -v $target:/workspace cyrus01337/neovim-devcontainer $argv[2..]
+            docker run $default_flags $default_volumes -v (realpath $target):/workspace cyrus01337/neovim-devcontainer $argv[2..]
         else
-            docker run $default_flags $default_volumes -v $target:/workspace/(basename $target) cyrus01337/neovim-devcontainer $argv[2..]
+            docker run $default_flags $default_volumes -v (realpath $target):/workspace/(basename $target) cyrus01337/neovim-devcontainer $argv[2..]
         end
     end
 end
