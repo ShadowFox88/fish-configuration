@@ -6,7 +6,8 @@ if which docker &> /dev/null
     alias dcb="dc build"
     alias dcr="dc down && dc up"
     alias di="docker image ls"
-    alias dp="docker pull"
+    alias dpl="docker pull"
+    alias dps="docker ps"
     alias drmi="docker rmi"
     alias docker-images="docker image ls"
 
