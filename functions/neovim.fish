@@ -12,13 +12,15 @@ if which nvim &> /dev/null
 else if which docker &> /dev/null
     function n --wraps "docker run"
         set target $argv[1]
+        set flags -it --rm
 
         if not [ $target ]
-            docker run -itv $HOME/.config/nvim:/workspace cyrus01337/neovim-devcontainer
+            docker run $flags -v $HOME/.config/nvim:/workspace cyrus01337/neovim-devcontainer
         else if [ -d $target ]
-            docker run -itv $target:/workspace cyrus01337/neovim-devcontainer $argv[2..]
+            docker run $flags -v $target:/workspace cyrus01337/neovim-devcontainer $argv[2..]
         else
-            docker run -itv (dirname $target):/workspace cyrus01337/neovim-devcontainer $argv[2..]
+            docker run $flags -v (dirname $target):/workspace cyrus01337/neovim-devcontainer $argv[2..]
         end
     end
 end
+
