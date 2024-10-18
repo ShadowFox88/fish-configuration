@@ -1,4 +1,12 @@
 #!/usr/bin/env fish
+if [ $PRE_INITIALISED_FUNCTIONS ]
+    for function_ in (find $__fish_config_dir/functions/ -type f -not \( -path '*/__*' \))
+        . $function_
+    end
+end
+
+set PRE_INITIALISED_FUNCTIONS true
+
 if not [ $RAN_BEFORE_SCRIPTS ]
     for script in $__fish_config_dir/conf.d/before/*.fish
         source $script
