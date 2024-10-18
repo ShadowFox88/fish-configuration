@@ -10,17 +10,19 @@ if which nvim &> /dev/null
         end
     end
 else if which docker &> /dev/null
-    function n --wraps "docker run"
+    function n --wraps "zsh"
         set target $argv[1]
         set default_flags -it --rm
-        set default_volumes -v $HOME/.gitconfig:/home/developer/.gitconfig -v $HOME/.git-credentials:/home/developer/.git-credentials
+        set default_volumes -v $HOME/.gitconfig:/home/developer/.gitconfig -v $HOME/.git-credentials:/home/developer/.git-credentials -v neovim-data:/home/developer/.local/share/nvim
 
         if not [ $target ]
-            docker run $default_flags $default_volumes -v $HOME/.config/nvim:/workspace cyrus01337/neovim-devcontainer
+            docker run $default_flags $default_volumes -v $HOME/.config/nvim:/workspace cyrus01337/neovim-devcontainer:latest -c nvim . $argv[2..]
         else if [ -d $target ]
-            docker run $default_flags $default_volumes -v (realpath $target):/workspace cyrus01337/neovim-devcontainer $argv[2..]
+            docker run $default_flags $default_volumes -v (realpath $target):/workspace cyrus01337/neovim-devcontainer:latest $argv[2..]
         else
-            docker run $default_flags $default_volumes -v (realpath $target):/workspace/(basename $target) cyrus01337/neovim-devcontainer $argv[2..]
+            set filename (basename $target)
+
+            docker run $default_flags $default_volumes -v (realpath $target):/workspace/$filename cyrus01337/neovim-devcontainer:latest $argv[2..]
         end
     end
 end
