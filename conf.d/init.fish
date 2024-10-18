@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
-if ! set -q RAN_BEFORE_SCRIPTS
+if not [ $RAN_BEFORE_SCRIPTS ]
     for script in $__fish_config_dir/conf.d/before/*.fish
         source $script
 
