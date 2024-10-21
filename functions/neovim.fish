@@ -22,7 +22,7 @@ else if which docker &> /dev/null
         else
             set filename (basename $target)
 
-            docker run $default_flags $default_volumes -v (realpath $target):/workspace/$filename cyrus01337/neovim-devcontainer:latest $argv[2..]
+            docker run $default_flags $default_volumes -v (realpath $target):/workspace/$filename cyrus01337/neovim-devcontainer:latest -c "nvim $filename" $argv[2..]
         end
     end
 end
