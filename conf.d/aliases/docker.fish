@@ -2,13 +2,15 @@
 if which docker &> /dev/null
     alias d="docker"
     alias db="docker build"
-    alias dc="docker compose"
     alias dcb="dc build"
+    alias dcom="docker compose"
+    alias dcon="docker container"
     alias dcr="dc down && dc up"
     alias di="docker image ls"
     alias dpl="docker pull"
     alias dps="docker ps"
     alias drmi="docker rmi"
+
     alias docker-images="docker image ls"
 
     function docker-prune-all --wraps "docker system prune"
