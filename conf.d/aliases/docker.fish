@@ -9,6 +9,7 @@ if which docker &> /dev/null
     alias di="docker image ls"
     alias dpl="docker pull"
     alias dps="docker ps"
+    alias dpsa="docker ps -a"
     alias drmi="docker rmi"
 
     alias docker-images="docker image ls"
