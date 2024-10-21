@@ -12,7 +12,7 @@ if which nvim &> /dev/null
 else if which docker &> /dev/null
     function n --wraps "zsh"
         set target $argv[1]
-        set default_flags -it --rm
+        set default_flags -it --rm --name (basename $target)
         set default_volumes -v $HOME/.gitconfig:/home/developer/.gitconfig -v $HOME/.git-credentials:/home/developer/.git-credentials -v neovim-data:/home/developer/.local/share/nvim
 
         if not [ $target ]
